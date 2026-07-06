@@ -1,31 +1,95 @@
 dataset:
   name: qemfi
+  version: zenodo_1.1.0
   data_root: data/qemfi
   cache_root: data/cache/qemfi
-  candidate_pool_size: 10000
-  initial_seed_size: 100
-  target_source: def2tzvp
-  utility_direction: maximize
-  property_name: null
+
+  raw:
+    file_pattern: QeMFi_{molecule}.npz
+    molecules:
+      - acrolein
+      - alanine
+      - dmabn
+      - nitrophenol
+      - o-hbdi
+      - sma
+      - thymine
+      - urea
+      - urocanic
+
+  npz_keys:
+    id: ID
+    coordinates: R
+    atomic_numbers: Z
+    conformation: CONF
+
   sources:
     - source_id: sto3g
       name: STO-3G
+      qemfi_index: 0
       is_target: false
       nominal_cost_rank: 1
     - source_id: 321g
       name: 3-21G
+      qemfi_index: 1
       is_target: false
       nominal_cost_rank: 2
     - source_id: 631g
       name: 6-31G
+      qemfi_index: 2
       is_target: false
       nominal_cost_rank: 3
     - source_id: def2svp
       name: def2-SVP
+      qemfi_index: 3
       is_target: false
       nominal_cost_rank: 4
     - source_id: def2tzvp
       name: def2-TZVP
+      qemfi_index: 4
       is_target: true
       nominal_cost_rank: 5
+
+  target_source: def2tzvp
+
+  property:
+    key: fosc
+    component: [0]
+    utility_direction: maximize
+    allow_nan_policy: drop_candidate_if_any_required_source_missing
+
+  runtime:
+    mode: require_real
+    runtime_key: null
+    runtime_key_candidates:
+      - runtime
+      - runtimes
+      - time
+      - times
+      - walltime
+      - comp_time
+      - computation_time
+    public_runtime_model: source_mean
+    candidate_specific_public_runtime: false
+    synthetic_debug_allowed: false
+
+  features:
+    mode: geometry_basic_v1
+    max_atoms: auto
+    normalize: true
+    cache_version: v1
+
+  split:
+    split_seed: 0
+    candidate_pool_size: 10000
+    initial_seed_size: 100
+    initial_source_policy: all_sources_for_seed_candidates
+    require_all_sources: true
+    candidate_id_policy: stable_molecule_row_id
+
+  leakage:
+    forbid_label_like_candidate_metadata: true
+    forbid_runtime_like_candidate_metadata: true
+    forbid_rank_like_candidate_metadata: true
+    expose_source_availability: false
 

@@ -15,7 +15,6 @@ venv/
 .env
 .env.*
 
-data/
+/data/
 results/*
 !results/.gitkeep
-
