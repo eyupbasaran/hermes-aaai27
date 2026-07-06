@@ -1,0 +1,31 @@
+dataset:
+  name: qemfi
+  data_root: data/qemfi
+  cache_root: data/cache/qemfi
+  candidate_pool_size: 10000
+  initial_seed_size: 100
+  target_source: def2tzvp
+  utility_direction: maximize
+  property_name: null
+  sources:
+    - source_id: sto3g
+      name: STO-3G
+      is_target: false
+      nominal_cost_rank: 1
+    - source_id: 321g
+      name: 3-21G
+      is_target: false
+      nominal_cost_rank: 2
+    - source_id: 631g
+      name: 6-31G
+      is_target: false
+      nominal_cost_rank: 3
+    - source_id: def2svp
+      name: def2-SVP
+      is_target: false
+      nominal_cost_rank: 4
+    - source_id: def2tzvp
+      name: def2-TZVP
+      is_target: true
+      nominal_cost_rank: 5
+

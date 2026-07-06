@@ -1,0 +1,2 @@
+"""Common scheduler protocol."""
+

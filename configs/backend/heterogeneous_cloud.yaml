@@ -1,0 +1,38 @@
+backends:
+  cpu_queue:
+    name: CPU queue
+    capacity_slots: 32
+    dollar_per_second: 0.00002
+    startup_latency_seconds: 0
+    max_batch_size: 1
+    runtime_multiplier_by_source:
+      sto3g: 1.0
+      321g: 1.0
+      631g: 1.0
+      def2svp: 1.0
+      def2tzvp: 1.0
+  gpu_fast:
+    name: Fast GPU
+    capacity_slots: 4
+    dollar_per_second: 0.0011
+    startup_latency_seconds: 30
+    max_batch_size: 1
+    runtime_multiplier_by_source:
+      sto3g: 0.7
+      321g: 0.6
+      631g: 0.5
+      def2svp: 0.4
+      def2tzvp: 0.35
+  premium_gpu:
+    name: Premium GPU
+    capacity_slots: 1
+    dollar_per_second: 0.001736
+    startup_latency_seconds: 60
+    max_batch_size: 1
+    runtime_multiplier_by_source:
+      sto3g: 0.65
+      321g: 0.55
+      631g: 0.45
+      def2svp: 0.35
+      def2tzvp: 0.30
+

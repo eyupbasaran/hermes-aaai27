@@ -1,0 +1,14 @@
+backends:
+  cpu_queue:
+    name: CPU queue
+    capacity_slots: 32
+    dollar_per_second: 0.00002
+    startup_latency_seconds: 0
+    max_batch_size: 1
+    runtime_multiplier_by_source:
+      sto3g: 1.0
+      321g: 1.0
+      631g: 1.0
+      def2svp: 1.0
+      def2tzvp: 1.0
+

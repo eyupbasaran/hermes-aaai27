@@ -1,0 +1,17 @@
+name: hermes-aaai27
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - matplotlib
+  - numpy
+  - pandas
+  - pyyaml
+  - scikit-learn
+  - scipy
+  - tqdm
+  - pytest
+  - pip
+  - pip:
+      - -e .
+

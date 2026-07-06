@@ -1,0 +1,21 @@
+experiment:
+  experiment_name: qemfi_m0_debug
+  output_dir: results/qemfi_m0_debug
+  dataset_config: configs/dataset/qemfi_debug.yaml
+  backend_config: configs/backend/heterogeneous_small.yaml
+  random_seeds: [0]
+  horizon_fraction_of_full_target_sweep: 0.02
+  max_target_queries: 100
+  oracle_known_runtime: false
+  schedulers:
+    - random
+    - high_fidelity_only
+    - two_stage
+    - mfens_like
+    - raal_like
+    - async_mfbo_like
+    - queue_prioritization
+    - hermes_no_backend
+    - hermes_no_pending_fantasies
+    - hermes
+

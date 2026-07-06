@@ -1,0 +1,2 @@
+"""Surrogate model protocol definitions."""
+
