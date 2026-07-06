@@ -55,11 +55,8 @@ def test_scheduler_visible_state_contains_no_oracle() -> None:
         job=job,
         start_time=0.0,
         predicted_finish_time=5.0,
-        true_finish_time=6.0,
         predicted_runtime_seconds=5.0,
-        true_runtime_seconds=6.0,
         predicted_cost=0.5,
-        true_cost=0.6,
     )
     completed = CompletedObservation(
         job=ProposedJob(candidate_id=3, source_id="sto3g", backend_id="cpu_queue"),
@@ -143,4 +140,3 @@ def test_scheduler_protocol_is_structural() -> None:
             return []
 
     assert isinstance(DummyScheduler(), BaseScheduler)
-
