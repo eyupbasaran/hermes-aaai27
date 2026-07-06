@@ -93,34 +93,29 @@ class ProposedJob:
     backend_id: str
 
 
-@dataclass(slots=True)
+@dataclass(frozen=True, slots=True)
 class PendingJob:
-    """A launched job whose observation is not yet visible to the scheduler."""
+    """Scheduler-visible pending job.
+
+    This type intentionally contains predicted quantities only. True runtime,
+    true cost, and true finish time are simulator-private replay details.
+    """
 
     job: ProposedJob
     start_time: float
     predicted_finish_time: float
-    true_finish_time: float
     predicted_runtime_seconds: float
-    true_runtime_seconds: float
     predicted_cost: float
-    true_cost: float
 
     def __post_init__(self) -> None:
         if self.start_time < 0:
             raise ValueError("PendingJob start_time must be non-negative.")
         if self.predicted_runtime_seconds < 0:
             raise ValueError("PendingJob predicted_runtime_seconds must be non-negative.")
-        if self.true_runtime_seconds < 0:
-            raise ValueError("PendingJob true_runtime_seconds must be non-negative.")
         if self.predicted_cost < 0:
             raise ValueError("PendingJob predicted_cost must be non-negative.")
-        if self.true_cost < 0:
-            raise ValueError("PendingJob true_cost must be non-negative.")
         if self.predicted_finish_time < self.start_time:
             raise ValueError("PendingJob predicted_finish_time cannot precede start_time.")
-        if self.true_finish_time < self.start_time:
-            raise ValueError("PendingJob true_finish_time cannot precede start_time.")
 
 
 @dataclass(slots=True)
